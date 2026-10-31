@@ -31,9 +31,9 @@ php artisan serve
 npm run dev
 ```
 
-* **Website**: `http://localhost:8000`
-* **Dashboard**: `http://localhost:8000/dashboard`
-* **Login**: `http://localhost:8000/login`
+* **Website**: `https://motorcycles.amirahagag.com`
+* **Dashboard**: `https://motorcycles.amirahagag.com/dashboard`
+* **Login**: `https://motorcycles.amirahagag.com/login`
 
 ---
 
