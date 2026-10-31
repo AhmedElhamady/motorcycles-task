@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+
+body {
+    font-family: 'Cairo', sans-serif !important;
+}
+
+body[data-menu-color=dark] .app-sidebar-menu #sidebar-menu>ul>li>a {
+    color: #ccc;
+}
+
+.app-sidebar-menu {
+    padding-top: 120px;
+}
+
+.sidebar-footer {
+    padding: 15px 0 10px;
+    background-color: var(--bs-sidebar-bg-dark);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    margin: 0;
+}
+
+#side-menu {
+    padding-bottom: 70px !important;
+}
+
+.sidebar-footer span {
+    font-size: 16px;
+}
+
+.logo-box .main-logo {
+    height: 100px;
+    height: 80px;
+}
+
+@media (max-width: 767px) {
+    .app-sidebar-menu {
+        padding-top: 100px;
+        padding-top: 80px;
+    }
+}
+
+.logo-box {
+    left: 0;
+}
+
+[dir="rtl"].logo-box {
+    left: unset !important;
+    right: 0 !important;
+}
+
+.logo-box {
+    height: 160px;
+    width: 260px;
+    padding: 0 20px;
+}
+
+.logo-box .logo span.logo-lg {
+    text-align: center;
+}
+
+[dir="rtl"] .menu-arrow:before {
+    content: "\f0141";
+}
+
+[dir="rtl"] .datatable-table>thead>tr>th {
+    text-align: right !important;
+}
+
+[dir="rtl"] .datatable-sorter::before,
+[dir="rtl"] .datatable-sorter::after {
+    right: unset !important;
+    left: 4px !important;
+}
+
+.datatable-selector {
+    padding: 0px !important;
+}
+
+.datatable-input {
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #ccc;
+}
+
+.datatable-table th button,
+.datatable-pagination-list button {
+    padding-right: 0;
+}
+
+.datatable-table>tbody>tr>td,
+.datatable-table>tbody>tr>th,
+.datatable-table>tfoot>tr>td,
+.datatable-table>tfoot>tr>th,
+.datatable-table>thead>tr>td,
+.datatable-table>thead>tr>th {
+    vertical-align: middle !important;
+}
+
+/* select2 */
+.select2-container .select2-selection--single {
+    height: 37.5px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 37.5px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 37.5px !important;
+}
+
+.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+    background-color: #2b2579 !important;
+}
+
+
+/* pagination */
+.custom-pagination nav .pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: end;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    font-family: "Material Design Icons";
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    float: left;
+    padding-right: var(--bs-breadcrumb-item-padding-x);
+    color: var(--bs-breadcrumb-divider-color);
+    content: var(--bs-breadcrumb-divider, "/");
+}
+
+.preview-img {
+    height: 70px;
+    width: auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}

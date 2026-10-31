@@ -1,0 +1,530 @@
+/* =========================================================
+   Motorcycle Group — reduced stylesheet
+   The page itself is now Tailwind-driven (see blade).
+   This file only keeps what utilities can't express:
+     • design tokens
+     • page helpers (.page-container, .eyebrow)
+     • form validation states
+     • brand logo mask (.bike-brand)
+     • Swiper slide height fix
+     • header / footer (used by the master layout)
+   ========================================================= */
+
+/* ---------- 1. Tokens ---------- */
+:root {
+  --primary: #FF742D;
+  --navy: #10364F;
+  --muted: #7E94A4;
+  --pale: #F0F5F8;
+  --border: #DFE7EC;
+  --error: #D64545;
+  --header-h: 75px;
+  --container: 1440px;
+  --gutter: 60px;
+}
+
+@media (max-width: 1319px) {
+  :root {
+    --gutter: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --gutter: 24px;
+    --header-h: 68px;
+  }
+}
+
+@media (max-width: 479px) {
+  :root {
+    --gutter: 20px;
+  }
+}
+
+/* ---------- 2. Base ---------- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: rgba(255, 116, 45, 0.22);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- 3. Page helpers used by the blade ---------- */
+.page-container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.eyebrow::before {
+  content: "";
+  flex: none;
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--primary);
+}
+
+@media (max-width: 767px) {
+  .eyebrow {
+    font-size: 10px;
+    gap: 8px;
+  }
+
+  .eyebrow::before {
+    width: 18px;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 200;
+  padding: 10px 16px;
+  background: var(--navy);
+  color: #fff;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  transform: translateY(-150%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* ---------- 4. Form validation states ---------- */
+.field-error {
+  display: none;
+  margin-top: 5px;
+  font-size: 11.5px;
+  line-height: 1.3;
+  color: var(--error);
+}
+
+.field-error.is-visible {
+  display: block;
+}
+
+input.is-invalid,
+select.is-invalid,
+textarea.is-invalid,
+.phone-group.is-invalid {
+  border-color: var(--error) !important;
+  box-shadow: 0 0 0 3px rgba(214, 69, 69, 0.08) !important;
+}
+
+.check.is-invalid {
+  outline: 2px solid var(--error);
+  outline-offset: 1px;
+}
+
+/* ---------- 5. Brand logo mask (featured bikes) ---------- */
+.bike-brand {
+  position: absolute;
+  z-index: 2;
+  top: 18px;
+  left: 18px;
+  display: block;
+  width: var(--w, 80px);
+  height: var(--h, 15px);
+  background-color: var(--brand, var(--navy));
+  -webkit-mask-image: var(--logo);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: left center;
+  -webkit-mask-size: contain;
+  mask-image: var(--logo);
+  mask-repeat: no-repeat;
+  mask-position: left center;
+  mask-size: contain;
+}
+
+/* ---------- 6. Swiper slide heights ---------- */
+.brands-swiper .swiper-slide,
+.cards-swiper .swiper-slide,
+.bikes-swiper .swiper-slide {
+  height: auto;
+}
+
+/* =========================================================
+   7. Master-layout styles
+   Keep only if your master layout still uses these classes.
+   If you've already migrated the header/footer to Tailwind,
+   you can safely delete everything below.
+   ========================================================= */
+
+/* Shared buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  height: 46px;
+  padding: 0 26px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.btn i {
+  font-size: 12px;
+}
+
+.btn-primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #F0641D;
+  border-color: #F0641D;
+  box-shadow: 0 8px 20px rgba(255, 116, 45, 0.24);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--navy);
+  color: var(--navy);
+}
+
+.btn-outline:hover {
+  background: var(--navy);
+  color: #fff;
+}
+
+.btn-header {
+  height: 45px;
+  padding: 0 26px;
+  font-size: 14px;
+}
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  height: var(--header-h);
+  background: #fff;
+  transition: box-shadow 0.25s ease;
+}
+
+.site-header.is-stuck {
+  box-shadow: 0 8px 30px rgba(16, 54, 79, 0.08);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  height: var(--header-h);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+}
+
+.brand-mark {
+  width: 50px;
+  height: 32px;
+  flex: none;
+}
+
+.brand-copy {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--navy);
+  white-space: nowrap;
+}
+
+.brand-tag {
+  margin-top: 4px;
+  font-size: 7.5px;
+  font-weight: 500;
+  letter-spacing: 0.21em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-inline: auto;
+}
+
+.nav-link {
+  position: relative;
+  padding: 7px 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--navy);
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.22s ease;
+}
+
+.nav-link:hover,
+.nav-link.is-active {
+  color: var(--primary);
+}
+
+.nav-link:hover::after,
+.nav-link.is-active::after {
+  transform: scaleX(1);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex: none;
+}
+
+.search-toggle,
+.menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--navy);
+  font-size: 16px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.search-toggle:hover,
+.menu-toggle:hover {
+  background: var(--pale);
+  color: var(--primary);
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.search-drawer {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: none;
+  padding: 14px 0;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 18px 30px rgba(16, 54, 79, 0.07);
+}
+
+.search-drawer.is-open {
+  display: block;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  color: var(--muted);
+}
+
+.search-form input {
+  flex: 1;
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: #fff;
+  font-size: 14px;
+  color: var(--navy);
+  outline: none;
+}
+
+.search-form input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255, 116, 45, 0.12);
+}
+
+.search-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--pale);
+  color: var(--navy);
+}
+
+.mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: none;
+  padding: 10px 24px 26px;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 22px 40px rgba(16, 54, 79, 0.12);
+}
+
+.mobile-menu.is-open {
+  display: block;
+}
+
+.mobile-link {
+  display: block;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.mobile-link:hover {
+  color: var(--primary);
+}
+
+.mobile-cta {
+  width: 100%;
+  margin-top: 20px;
+}
+
+@media (max-width: 1319px) {
+  .main-nav {
+    gap: 22px;
+  }
+
+  .header-actions {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .main-nav {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  .header-inner {
+    justify-content: space-between;
+  }
+
+  .header-actions {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .brand-mark {
+    width: 44px;
+    height: 28px;
+  }
+
+  .brand-name {
+    font-size: 13px;
+  }
+
+  .brand-tag {
+    font-size: 6.5px;
+    margin-top: 3px;
+  }
+
+  .btn-header {
+    display: none;
+  }
+
+  .header-actions {
+    gap: 4px;
+  }
+}

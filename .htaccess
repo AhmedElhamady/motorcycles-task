@@ -1,0 +1,20 @@
+<IfModule mod_rewrite.c>
+
+    RewriteEngine On
+
+    # Redirect everything to Laravel public folder
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+
+</IfModule>
+
+# Protect sensitive Laravel files
+<FilesMatch "^(\.env|\.env\..*|artisan|composer\.json|composer\.lock|package\.json|package-lock\.json|vite\.config\..*|phpunit\.xml|webpack\.mix\.js)$">
+    Require all denied
+</FilesMatch>
+
+# Protect sensitive directories
+RewriteRule ^(app|bootstrap|config|database|resources|routes|storage|tests|vendor)/ - [F,L]
+
+# Disable directory listing
+Options -Indexes
