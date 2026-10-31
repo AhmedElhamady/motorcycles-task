@@ -65,7 +65,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="role">Role <span class="text-danger">*</span></label>
-                            <select class="form-select select2 @error('role') is-invalid @enderror" name="role" id="role"
+                            <select class="form-select @error('role') is-invalid @enderror" name="role" id="role"
                                 required @disabled($user->is(auth()->user()))>
                                 @foreach (App\Enums\Role::options() as $value => $label)
                                     <option value="{{ $value }}" @selected(old('role', $user->role->value) === $value)>
@@ -89,8 +89,7 @@
                             <select class="form-select select2 @error('brand_ids') is-invalid @enderror" name="brand_ids[]"
                                 id="brand_ids" multiple size="6">
                                 @foreach ($brands as $brand)
-                                    <option value="{{ $brand->id }}"
-                                        @selected(in_array($brand->id, old('brand_ids', $user->brands->pluck('id')->all())))>
+                                    <option value="{{ $brand->id }}" @selected(in_array($brand->id, old('brand_ids', $user->brands->pluck('id')->all())))>
                                         {{ $brand->name }}
                                     </option>
                                 @endforeach

@@ -63,7 +63,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="role">Role <span class="text-danger">*</span></label>
-                            <select class="form-select select2 @error('role') is-invalid @enderror" name="role" id="role"
+                            <select class="form-select @error('role') is-invalid @enderror" name="role" id="role"
                                 required>
                                 @foreach (App\Enums\Role::options() as $value => $label)
                                     <option value="{{ $value }}" @selected(old('role') === $value)>{{ $label }}

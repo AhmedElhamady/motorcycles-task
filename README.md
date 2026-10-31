@@ -4,6 +4,17 @@ A Laravel 12 web application featuring a public motorcycle showroom, customer in
 
 ---
 
+## 🛠️ Tech Stack
+
+- **Laravel 12**
+- **PHP 8.2**
+- **MySQL**
+- **Laravel Breeze**
+- **Spatie Translatable**
+- **Mcamara Localization**
+- **Tailwind CSS**
+- **Blade**
+
 ## 🚀 Setup & Installation
 
 Follow these steps to run the project locally:
